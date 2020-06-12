@@ -5,7 +5,8 @@
                 <li v-for="tab of tabs" :key="tab" class="nav-item"><a class="nav-link">{{tab}}</a></li>
             </ul>
         </div>
-            <div class="container" id="propertyFilters">
+        <div class="row">
+            <div class="container col" id="propertyFilters">
                 <div class="row mb-2">
                     <div class="col-xs-12 col-md-3">
                         <div id="current-distance">Within: {{maxDistance}} miles</div>
@@ -20,19 +21,20 @@
                         <input type="number" v-model="maxPrice" step="1"/>
                     </div>
                 </div>
+                <div class="row">
+                    <List class="col-md-6" :items="property_filter"/>
+                    <div class="col-md-6">
+                        <Map v-if="properties.length > 0" :markers="property_filter" />
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <List :items="property_filter"/>
-            </div>
-        <!--<div class="col">
-            <Map/>
-        </div>-->
+        </div>
     </div>
 </template>
 
 <script>
     import List from "./List";
-    //import Map from "./Map";
+    import Map from "./Map";
     export default {
         data() {
             return {
@@ -45,7 +47,7 @@
         },
         components: {
             List,
-            //Map
+            Map
         },
         mounted: function() {
             fetch("http://192.168.1.138:3000/api/murdockhouses").then(result=>result.json()).then(result=>{

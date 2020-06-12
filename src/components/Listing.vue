@@ -4,11 +4,11 @@
             <div class="col-xs-12 col-sm-4 text-center">
                 <img class="image" :src="image_address"/>
             </div>
-            <span class="property_info col col-sm-4 container justify-content-center">
+            <span class="property_info col-sm-4 container justify-content-center">
                 <span class="address row pl-3"><a :href="url" target="blank">{{item.address}}</a></span>
                 <span class="price row pl-3">{{item.price}}</span>
             </span>
-            <span class="distance col col-sm-2">{{item.trailDistance.toFixed(2)}} miles</span>
+            <span class="distance col-sm-2">{{item.trailDistance.toFixed(2)}} miles</span>
         </div>
     </li>
 </template>
